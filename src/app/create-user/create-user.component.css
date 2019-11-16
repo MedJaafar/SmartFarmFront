@@ -1,0 +1,46 @@
+body{
+    display: flex;
+    background-repeat: no-repeat;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/000/095/260/large_2x/floral-green-colorful-background-vector.jpg")
+}
+.header-division{
+    text-align: center;
+    color : white ;
+    margin : 30px; 
+}
+.buttom-header{
+    border-radius: 5px;
+    border :  solid grey 1px;
+    display: flex ; 
+    justify-content: space-between;
+    background: rgb(207, 235, 223);
+    margin-top: 15px;
+
+}
+.bottom-button{
+    width: 40%;
+    
+}
+.mycard{
+    margin-bottom: 50px;
+    border-radius: 2px;
+    border :solid rgb(22, 102, 32) 1px;
+}
+.form-group{
+margin-bottom: 0px;
+}
+.inputError{
+border: solid red 2px ;
+background: rgb(252, 230, 230);
+}
+.inputValid{
+    border: solid rgb(43, 177, 50) 2px ;
+    background: rgb(252, 230, 230);
+    }
+.span-error{
+    opacity: 0;
+    color: red;
+    font-size: 14px;
+    font-family:Arial, Helvetica, sans-serif ;
+    font-style: italic;
+}

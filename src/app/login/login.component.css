@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+.container_costum{
+padding-top: 20px;
+font-family: 'Numans', sans-serif;
+}
+
+.container{ 
+    align-content: center; 
+    }
+
+.card{
+height: auto;
+margin-top:15px;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+
+.card-header h5{
+color: white;
+font-size: 18px;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: rgb(115, 174, 223);
+color: white;
+border-right: white solid 1px;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+}
+
+.login_btn{
+border-color: white;
+color: white;
+font-size: 18px;
+background-color: rgb(247, 150, 23);
+width: auto;
+}
+
+.login_btn:hover{
+color: white;
+background-color: rgb(211, 192, 141);
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+.rgi_logo{
+    width: 100px;
+    height: 100px;
+}
+.input-group-costum{
+    color: white;
+    font-size: 16px;
+    background-color: rgb(70, 140, 206);
+}
+.input-group-costum:hover{
+    background-color: #0e66ca;
+}
+
+.costum-input{
+    background-color: rgb(216, 223, 247);
+    border-color: white; 
+    color:  rgb(55, 93, 214); 
+    
+    
+}
+.costum-invalid{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic bold;
+    color: rgb(209, 9, 9);
+    font-size: 15px
+    
+}
+.card-costum{
+    background-color: rgba(2, 10, 43, 0.2) !important;  
+}
+
+::placeholder{
+    color: rgb(55, 93, 214); 
+}
+.costum-card-header{
+  border-left: white 3px solid;
+  border-right: white 3px solid;
+  border-radius: 5px;
+}

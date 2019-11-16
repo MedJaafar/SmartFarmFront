@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+.cs-header-costum{
+    border-left: white 4px solid;
+    border-right: white 4px solid;
+    border-radius: 5px;
+    font-family: 'Numans', sans-serif;
+}
+.cs-costum-card{
+    background-color: rgba(43, 51, 80, 0.2) !important;  
+}
+
+.connection_logo{
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+.color-dd{
+    
+}
+.input-group-prepend span{
+    width: 50px;
+    background-color: rgb(115, 174, 223);
+    color: white;
+    border-right: white solid 1px;
+    }
+    
+    input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+    }
+    .input-group-costum{
+        color: white;
+        font-size: 16px;
+        background-color: rgb(70, 140, 206);
+    }
+    .input-group-costum:hover{
+        background-color: #0e66ca;
+    }
+    
+    .costum-input{
+        background-color: rgb(216, 223, 247);
+        border-color: white; 
+        color:  rgb(55, 93, 214); 
+        
+        
+    }
+    .costum-invalid{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-style: italic bold;
+        color: rgb(209, 9, 9);
+        font-size: 15px
+        
+    }
+    ::placeholder{
+        color: rgb(55, 93, 214); 
+    }

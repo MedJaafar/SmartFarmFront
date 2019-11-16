@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide|Indie+Flower&display=swap');
+.costum-login-button{
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-radius: 35px;
+}
+.brand_costum{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.username{
+    font-family: Indie, sans-serif;
+   }
+.navbar_costum{
+}
+.costum-brand{
+font-family: 'Audiowide', cursive;
+}
