@@ -1,3 +1,157 @@
-<p>
-  dashboard works!
-</p>
+<div class="container spacer">
+  <div class="card border border-info">
+    <div class="card-header bg-gray-300">
+      <strong class="card-title">SYSTEM DASHBOARD :</strong>&nbsp;&nbsp;<span
+        class="font-weight-normal">"{{systemFarm.systemName}}"</span>
+      <span class="mySpan"><i class="fas fa-power-off"></i> Automatic Watering :</span>&nbsp;
+      <span *ngIf="systemFarm.bEnableWatering" class="text-primary font-weight-bold">"ON"</span>
+      <span *ngIf="!systemFarm.bEnableWatering" class="text-danger font-weight-bold">"OFF"</span>
+    </div>
+    <div class="card-body ">
+      <div class="row my-row ">
+        <div class="text-gray-700 font-weight-bold"><i class="far fa-clock"></i> Time Mode Filter</div>
+        <div class="custom-control custom-radio  pr-4 my-radio">
+          <input type="radio" class="custom-control-input" id="check-month" (click)="loadStatusChartMonth()"
+            name="defaultExampleRadios" [checked]="checkselected() =='3'" checked>
+          <label class="custom-control-label" for="check-month">This Month</label>
+        </div>
+        <div class="custom-control custom-radio  pr-4 my-radio">
+          <input type="radio" class="custom-control-input" id="check-week" (click)="loadStatusChartWeek()"
+            name="defaultExampleRadios" [checked]="checkselected() =='2'">
+          <label class="custom-control-label" for="check-week">This Week</label>
+        </div>
+        <div class="custom-control custom-radio  pr-4 my-radio">
+          <input type="radio" class="custom-control-input" id="check-day" (click)="loadStatusChartToday()"
+            [checked]="checkselected() =='1'" name="defaultExampleRadios" />
+          <label class="custom-control-label" for="check-day">Today</label>
+        </div>
+      </div>
+      <hr>
+      <div *ngIf ="checkselected() !='1'" class="row">
+        <div class="col-9">
+            <div class="text-gray-700 font-weight-bold small my-margin">&nbsp;&nbsp;<i class="far fa-clock"></i> Hours Filter Temprature & Humidity : <span class="text-dark">{{selectedHour}}h</span> </div>
+        </div>
+        <div class="col-3">
+          <select class="form-control" id="selectHours" #selectHours  (change)=reloardHours(selectHours.value)>
+            <option >Choose Time</option>
+            <option [value]="0">0 - 2</option>
+            <option [value]="2"> 2 - 4</option>
+            <option [value]="4">4 - 6</option>
+            <option [value]="6">6 - 8</option>
+            <option [value]="8">8 - 10</option>
+            <option [value]="10">10 - 12</option>
+            <option [value]="12">12 - 14</option>
+            <option [value]="14">14 - 16</option>
+            <option [value]="16">16 - 18</option>
+            <option [value]="18">18 - 20</option>
+            <option [value]="20">20 - 22</option>
+            <option [value]="22">22 - 00</option>
+          </select>
+        </div>
+      </div>
+      <hr *ngIf="checkselected() !='1'">
+      <!--Check Type Operation-->
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-outline-primary" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                <i class="fas fa-tint "></i> Watering Data&nbsp; <i class="fas fa-sort-down"></i>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" >
+            <div class="card-body " style="text-align:center">
+              <h6 class="text-primary">
+                Watering Data &nbsp; <i class="fas fa-water"></i>
+              </h6>
+              <br>
+              <div class="row">
+                <div class="col-4 border-right">
+                  <div class="row">
+                    <div class="col-6 text-font-costum">
+                      <i class="fas fa-tint "></i> Water Consumed :
+                    </div>
+                    <div class="col-6 text-gray-600">
+                      {{wateringData[0] | number}} Litters
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-4 border-right">
+                  <div class="row">
+                    <div class="col-6 text-font-costum">
+                      <i class="fas fa-hourglass-end"></i> Total Time :
+                    </div>
+                    <div class="col-6 text-gray-600">
+                      {{wateringData[1]}}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <div class="row">
+                    <div class="col-6 text-font-costum">
+                      <i class="fas fa-stream"></i> Pump Flow :
+                    </div>
+                    <div class="col-6 text-gray-600">
+                      {{systemFarm.pumpDebit}} Litters/Hour
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <canvas id="barChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <!---->
+        <div class="card">
+            <div class="card-header" id="headingTwo3">
+              <h5 class="mb-0">
+                <button class="btn btn-outline-success collapsed" data-toggle="collapse" data-target="#collapseTwo3"
+                  aria-expanded="false" aria-controls="collapseThree">
+                  <i class="fas fa-glass-whiskey"></i> Soil Moisiture Data&nbsp; <i
+                    class="fas fa-sort-down"></i>
+                </button>
+              </h5>
+            </div>
+            <div id="collapseTwo3" class="collapse" aria-labelledby="headingTwo3" data-parent="#accordion">
+              <div class="card-body">
+                <div style="text-align:center">
+                  <h6>
+                    Soil Moisiture Chart
+                  </h6>
+                  <canvas id="lineChartMoisiture"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--Moisiture END-->
+        <div class="card">
+          <div class="card-header" id="headingTwo2">
+            <h5 class="mb-0">
+              <button class="btn btn-outline-danger collapsed" data-toggle="collapse" data-target="#collapseTwo2"
+                aria-expanded="false" aria-controls="collapseTwo">
+                <i class="fas fa-temperature-low"></i> Temperature & Air Humidity Data&nbsp; <i
+                  class="fas fa-sort-down"></i>
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordion">
+            <div class="card-body">
+              <div style="text-align:center">
+                <h6>
+                  Temperature - Air Humidity
+                </h6>
+                <canvas id="lineChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>

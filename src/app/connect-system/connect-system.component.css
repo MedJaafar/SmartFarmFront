@@ -6,17 +6,29 @@
     font-family: 'Numans', sans-serif;
 }
 .cs-costum-card{
-    background-color: rgba(43, 51, 80, 0.2) !important;  
+    background-color: rgba(2, 10, 43, 0.2) !important;   
+    margin: 20px;
 }
 
 .connection_logo{
     width: 100px;
     height: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
-.color-dd{
-    
+.custom-select{
+    font-family: 'Audiowide', cursive;
+    font-size: 15px;
 }
+
+.custom-select:hover{
+    border: 2px white solid;
+}
+
+.custom-button-test{
+    font-family: 'Audiowide', cursive;
+    font-size: 15px;
+}
+
 .input-group-prepend span{
     width: 50px;
     background-color: rgb(115, 174, 223);
@@ -31,19 +43,18 @@
     .input-group-costum{
         color: white;
         font-size: 16px;
-        background-color: rgb(70, 140, 206);
+        background-color: rgb(37, 117, 192);
     }
     .input-group-costum:hover{
-        background-color: #0e66ca;
+        background-color: #0d6edd;
     }
     
     .costum-input{
         background-color: rgb(216, 223, 247);
-        border-color: white; 
-        color:  rgb(55, 93, 214); 
-        
-        
+        border : white solid 3px;
+        color:  rgb(113, 143, 243); 
     }
+    
     .costum-invalid{
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-style: italic bold;
@@ -52,5 +63,9 @@
         
     }
     ::placeholder{
-        color: rgb(55, 93, 214); 
+        color: rgb(110, 143, 248); 
+        font-family: Arial, Helvetica, sans-serif;
     }
+    
+
+

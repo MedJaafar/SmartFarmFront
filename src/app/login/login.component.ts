@@ -3,8 +3,6 @@ import { AuthenticationService } from '../_services/authentication.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AlertService } from '../_services/alert.service';
-import { AppUser } from '../models/appUser';
-import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +14,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   loading = false;
+  username : any;
+  password :any;
 
   constructor(private authService: AuthenticationService
               ,private router:Router
@@ -42,12 +42,11 @@ export class LoginComponent implements OnInit {
     this.loading = true;
     this.authService.login(this.f.username.value, this.f.password.value).subscribe(resp=>{
       console.log(resp.headers.get('Authorization')); 
-
       // We get jwt from Network /login response
       let jwt = resp.headers.get('Authorization');
       this.authService.saveToken(jwt,this.f.username.value);
       this.authService.getConnectedUser();
-      this.router.navigateByUrl("/dashboard");
+      this.router.navigateByUrl("/connect-system");
       
     }, err=>{
       this.alertService.error(err);

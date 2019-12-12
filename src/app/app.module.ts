@@ -14,6 +14,18 @@ import { ErrorInterceptor } from './_services/error-interceptor.service';
 import { AuthGuard } from './guards/auth.guard';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { ConnectSystemComponent } from './connect-system/connect-system.component';
+import { ConnectionService } from './_services/connection.service';
+import { AuthGuardAdmin } from './guards/admin.guard.service';
+import { CreateUserService } from './_services/create-user.service';
+import { AccessForbiddenComponent } from './access-forbidden/access-forbidden.component';
+import { LoginAuthGuard } from './guards/login.guard';
+import { StatusTableComponent } from './status-table/status-table.component';
+import { StatusTableService } from './_services/status-table.service';
+import { MapComponent } from './map/map.component';
+import { DataResolver } from './_resolvers/data.resolver';
+import { LoadingComponent } from './loading/loading.component';
+import { SystemParametersComponent } from './system-parameters/system-parameters.component';
+import { SystemParametersService } from './_services/system-parameters.service';
 
 
 
@@ -24,7 +36,12 @@ import { ConnectSystemComponent } from './connect-system/connect-system.componen
     LoginComponent,
     AlertComponent,
     CreateUserComponent,
-    ConnectSystemComponent
+    ConnectSystemComponent,
+    AccessForbiddenComponent,
+    StatusTableComponent,
+    MapComponent,
+    LoadingComponent,
+    SystemParametersComponent
   ],
   imports: [
     HttpClientModule,
@@ -35,8 +52,15 @@ import { ConnectSystemComponent } from './connect-system/connect-system.componen
   ],
   providers: [
     AuthGuard,
+    AuthGuardAdmin,
+    LoginAuthGuard,
     AlertService,
     AuthenticationService,
+    ConnectionService,
+    CreateUserService,
+    StatusTableService,
+    DataResolver,
+    SystemParametersService,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

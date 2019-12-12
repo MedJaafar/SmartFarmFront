@@ -39,6 +39,17 @@ export class AppComponent implements OnInit  {
     return this.authService.isAuthenticated();
 
   }
+
+  isSysteMonitoring(){
+    return this.authService.isSystemMonitoring();
+  }
+
+  goToDashboard(){
+    this.router.navigateByUrl('/loading-data', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/dashboard/3']);
+      localStorage.setItem("selectedCheck","3");
+   }); 
+  }
   
   logout(){
     this.authService.logout();

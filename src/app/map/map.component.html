@@ -1,0 +1,30 @@
+<div class="container spacer">
+  <div class="card">
+    <div class="card-header badge-info"><i class="fas fa-map-marked-alt"></i> Positionning and Map Info ( OSM )</div>
+    <div class="card-body myborder">
+      <div class="row">
+        <div class="col-lg-3 col-sm-10">
+            <div class="card border border-secondary">
+                <div class="card-header">
+                    <strong class="card-title">Farm :</strong> "{{systemFarm.systemName}}"
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><strong>Adress : </strong>"{{systemFarm.voieName}}"</p>
+                    <p class="card-text"><strong>Region : </strong>{{systemFarm.city}} </p>
+                    <p class="card-text"><strong>Postal Code : </strong>{{systemFarm.postalCode}} </p>
+                    <p class="card-text"><strong>Country :</strong> {{systemFarm.country}} </p>
+                    <p class="card-text"><strong>Longitude :</strong> {{systemFarm.localisation[0]}} </p>
+                    <p class="card-text"><strong>Latitude :</strong> {{systemFarm.localisation[1]}} </p>
+                </div>
+            </div>
+        <div class ="card-header">
+            <button class="btn btn-outline-primary" (click)="setCenter()"><i class="fas fa-map-marker-alt"></i> Reset Position</button>
+        </div>
+      </div>
+        <div class="col-lg-9 col-sm-12">
+          <div id="map" class="map myborder "></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

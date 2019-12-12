@@ -1,0 +1,36 @@
+.my-radio{
+    border-right: 1px rgb(199, 197, 197) solid;
+    border-radius: 2px;
+    font-family: 'Righteous', cursive;
+}
+.my-radio:hover{
+    color: rgb(71, 39, 104);
+    font-style: italic;
+}
+.my-row{
+    display: flex;
+    /* Cette valeur peut être changée dans l'exemple */
+    justify-content: space-around;
+    font-size: 13px;
+
+}
+.my-table{
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    font-family: 'Righteous', cursive !important;
+    font-size: 12px !important; }
+    
+.my-table-header{
+    font-family: 'Kanit',cursive;
+    font-size: 14px;
+}
+.my-pagination{
+    font-family: 'Kanit',cursive;
+    font-size: 12px;
+}
+.mySpan{
+    border-left: solid 1px rgb(59, 58, 58);
+    padding-left: 10px;
+    margin-left:20px;
+
+}

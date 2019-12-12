@@ -1,0 +1,58 @@
+<div class="container spacer">
+  <div class="card border border-info">
+    <div class="card-header bg-gray-300">
+      <i class="fas fa-cogs"></i>
+      <strong class="card-title"> SYSTEM CONFIGURATIONS FOR :</strong>&nbsp;&nbsp;<span
+        class="font-weight-normal">"{{systemFarm.systemName}}"</span>
+    </div>
+    <div class="card-body ">
+      <div class="row">
+        <div class="card ml-auto mr-5">
+          <div class="card-header">
+              <span class="mySpan"><i class="fas fa-power-off"></i> Automatic Watering </span>&nbsp;
+          </div>
+          <div class="card-body card-block">
+            <form action="" method="post" class="form-horizontal">
+              <div class="row form-group">
+                <div class="col-5">
+                  <!-- Rounded switch -->
+                  <label class="switch">
+                    <input type="checkbox" [defaultChecked]="systemFarm.bEnableWatering" (click)="toggleEnableWatering()">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                <div class="col-7">
+                  <span  *ngIf="systemFarm.bEnableWatering"class="text-primary font-weight-bold">ENABLED </span>
+                  <span  *ngIf="!systemFarm.bEnableWatering"class="text-danger font-weight-bold">DISABLED</span>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-footer">
+          </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <span class="mySpan"><i class="fas fa-power-off"></i> Automatic Watering :</span>&nbsp;
+                <span  *ngIf="systemFarm.bEnableWatering"class="text-primary font-weight-bold">"ON"</span>
+                <span  *ngIf="!systemFarm.bEnableWatering"class="text-danger font-weight-bold">"OFF"</span>
+            </div>
+            <div class="card-body card-block">
+              <form action="" method="post" class="form-horizontal">
+                <div class="row form-group">
+                  <div class="col-12">
+                    <!-- Rounded switch -->
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>

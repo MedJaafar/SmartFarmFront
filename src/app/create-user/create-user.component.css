@@ -12,19 +12,17 @@ body{
     border-radius: 5px;
     border :  solid grey 1px;
     display: flex ; 
-    justify-content: space-between;
-    background: rgb(207, 235, 223);
+    justify-content:  space-around;
+    background: rgb(240, 252, 246);
     margin-top: 15px;
 
 }
 .bottom-button{
-    width: 40%;
-    
+    width: 30%;
 }
 .mycard{
     margin-bottom: 50px;
-    border-radius: 2px;
-    border :solid rgb(22, 102, 32) 1px;
+    border :solid rgb(118, 122, 119) 2px;
 }
 .form-group{
 margin-bottom: 0px;
@@ -35,7 +33,7 @@ background: rgb(252, 230, 230);
 }
 .inputValid{
     border: solid rgb(43, 177, 50) 2px ;
-    background: rgb(252, 230, 230);
+    background: rgb(233, 250, 230);
     }
 .span-error{
     opacity: 0;

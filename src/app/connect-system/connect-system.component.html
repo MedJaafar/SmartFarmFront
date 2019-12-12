@@ -1,37 +1,37 @@
 <div class="container-fluid row justify-content-center">
-    <div class="d-flex col-12 justify-content-center">
-				<img class="connection_logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqxEt4dKsgAAcxw6PPOZ9B30yAOvzxfIYG4ArtxX6c6_4z6wA1dw">
+  <div class="d-flex col-12 justify-content-center">
+    <img class="connection_logo"
+      src="https://cdn4.iconfinder.com/data/icons/business-dealings-2/614/2916_-_System_Connection-512.png">
+  </div>
+  <alert></alert>
+  <div class="card shadow mb-2 mt-2 col-sm-10 col-lg-8 cs-costum-card">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between cs-header-costum">
+      <h6 class="m-0 font-weight-bold text-white"><i class="fas fa-cogs"></i> Connection - System Parameters</h6>
     </div>
-<div class="card shadow mb-4  col-sm-10 col-lg-8 cs-costum-card">
-  <!-- Card Header - Dropdown -->
-  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between cs-header-costum">
-    <h6 class="m-0 font-weight-bold text-white"><i class="fas fa-cogs"></i> Connection - System Parameters</h6>
-    <h6><strong>Step 2  </strong><i class="fas fa-caret-right"></i> Enter dynamic URL of remote system</h6>
-    <div class="dropdown no-arrow color-dd">
-      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-ellipsis-v fa-sm fa-fw text-white"></i>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-        <div class="dropdown-header">Options</div>
-        <a class="dropdown-item" href="#">Skip</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Something else here</a>
+    <!-- Card Body -->
+    <div class="card-body">
+      <div class="alert alert-primary" role="alert">
+       <strong>SELECT</strong> The FarmSystem To Monitor  <i class="fas fa-level-down-alt"></i>
       </div>
+      <hr>
+      <div class="alert alert-danger alert-dismissible fade show" id="alert-validation" role="alert" hidden>
+        <strong>Excuse Me !</strong> You should Choose The System To Monitor.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="input-group form-group">
+        <select class="custom-select input-group-costum" #systemsSelect  (change)=loadSystemUrl(systemsSelect.value)
+          aria-label="Example select with button addon">
+          <option class="text-white-50" [ngValue]="undefined" selected disabled><strong>Choose Smart Farm System</strong></option>
+          <option *ngFor="let system of Systems" [value]="system.systemID">{{system.systemID}} - {{system.systemName}} - ( {{system.city}}, {{system.country}} )</option>
+        </select>
+      </div>  
+      <hr>
+      <button class="btn btn-light float-right custom-button-test mt-3" (click)="testConnection()"><i class="fas fa-bolt"></i>&nbsp;Test
+        Connection</button>
     </div>
   </div>
-  <!-- Card Body -->
-  <div class="card-body">
-    Dropdown menus can be placed in the card header in order to extend the functionality of a basic card. In this dropdown card example, the Font Awesome vertical ellipsis icon in the card header can be clicked on in order to toggle a dropdown menu.
-    <div class="input-group form-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="fas fa-user"></i></span>
-      </div>
-      <input type="text" formControlName="username" class="form-control costum-input" placeholder="Username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" >
-      <div *ngIf=" !!f.username.errors" class="invalid-feedback costum-invalid">
-        <div *ngIf="!!f.username.errors.required">&nbsp;&nbsp;<i class="fas fa-link"></i>&nbsp;Username is required</div>
-      </div>
-      </div>
-  </div>
-</div>
+  
 </div>

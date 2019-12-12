@@ -1,51 +1,96 @@
 <div class="container spacer">
   <div class="card">
-<div class="card-body">
-  
-    <div >
-      <div class="card mycard" >
-          <div class="card-header badge-info font-weight-bold mycardheader">Register</div>
-              <div class="card-body">
-                    <form action="" id="myform">
-                      
-                      <div class="col-lg-6 col-sm-12">
-                     <div class="form-group">
-                          <label class="font-weight-bold" for="nom">Name:</label>
-                          <input type="text" class="form-control" placeholder="Name" id="nom" value="" >
-                          <span class="span-error" id="name-msg" >This sentence is invisible</span>
-                        </div>
-                        <div class="form-group">
-                          <label class="font-weight-bold" for="prenom">First Name:</label>
-                          <input type="text" class="form-control" placeholder="First Name" id="firstname" name="prenom">
-                          <span class="span-error" id="prenom-msg" style="opacity:0;">This sentence is invisible</span>
-                        </div>
-                        <div class="form-group">
-                          <label class="font-weight-bold" for="email">Email:</label>
-                          <input type="text" class="form-control" placeholder="Email" id="email" name="email" >
-                          <span class="span-error" id="email-msg" style="opacity:0;">This sentence is invisible</span>
-                        </div>
-                        
-                          
-                        <div class="form-group">
-                          <label class="font-weight-bold" for="password">Password:</label>
-                          <input type="password" class="form-control" placeholder="Password" id="password" name="password">
-                            <span class="span-error" id="password-msg" style="opacity:0;">This sentence is invisible</span>
-                        </div>
-                        
-                        <div class="form-group">
-                          <label class="font-weight-bold" for="tel">Telephone:</label>
-                          <input type="tel" class="form-control" placeholder="Telephone" id="tel" name="tel" >
-                          <span class="span-error" id="tel-msg" style="opacity:0;">This sentence is invisible</span>
-                        </div>
-                       </div>
-                      
-                      <div class="card-header badge-light buttom-header ">
-                        <button type="button"  onclick="validation()" class="btn btn-success bottom-button">Register</button>
-                        <button type="refresh"  onclick="Reset()" class="btn btn-primary bottom-button" >Reset</button></div>
-                      </form>
+    <div class="card-body">
+      <div>
+          <alert></alert>
+        <div class="card mycard">
+          <div class="card-header badge-info font-weight-bold mycardheader"><i class="fas fa-user-plus"></i> Create New
+            Farm User</div>
+          <div *ngIf="mode==1" class="card-body">
+            <form #f="ngForm" (submit)="onSaveNewUser(f.value)">
+              <div class="col-lg-6 col-sm-12 ">
+                <div class="form-group">
+                  <label class="font-weight-bold font-italic small" for="last_name">· Last Name:</label>
+                  <input type="text" class="form-control" placeholder="Name" id="last_name" ngModel name="last_name">
+                  <span class="span-error" id="name-msg">This sentence is invisible</span>
+                </div>
+                <div class="form-group">
+                  <label class="font-weight-bold font-italic small" for="first_name">· First Name:</label>
+                  <input type="text" class="form-control" placeholder="First Name" id="first_name" ngModel name="first_name">
+                  <span class="span-error" id="prenom-msg" style="opacity:0;">This sentence is invisible</span>
+                </div>
+                <div class="form-group">
+                  <label class="font-weight-bold font-italic small" for="username">· Username:</label>
+                  <input type="text" class="form-control" placeholder="Username" id="username" ngModel name="username">
+                  <span class="span-error" id="username-msg" style="opacity:0;">This sentence is invisible</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="font-weight-bold font-italic small" for="email">· Email:</label>
+                  <input type="text" class="form-control" placeholder="Email" id="email" ngModel name="email">
+                  <span class="span-error" id="email-msg" style="opacity:0;">This sentence is invisible</span>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="font-weight-bold font-italic small " for="password">· Password:</label>
+                  <input type="password" class="form-control" placeholder="Password" id="password" ngModel name="password">
+                  <span class="span-error" id="password-msg" style="opacity:0;">This sentence is invisible</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="font-weight-bold font-italic small" for="confirmedPassword">· Confirm Password:</label>
+                  <input type="password" class="form-control" placeholder="Confirm Password" id="confirmedPassword" ngModel
+                    name="confirmedPassword">
+                  <span class="span-error" id="passwordConfMsg" style="opacity:0;">This sentence is invisible</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="font-weight-bold font-italic small" for="tel">· Telephone:</label>
+                  <input type="tel" class="form-control" placeholder="Telephone" id="tel" ngModel name="tel">
+                  <span class="span-error" id="tel-msg" style="opacity:0;">This sentence is invisible</span>
+                </div>
+
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="activated" ngModel name="activated">
+                    <label class="custom-control-label font-weight-bold font-italic small" for="activated">· Set
+                      User Active</label>
+                  </div>
+                </div>
               </div>
-            </div>
+              <div class="form-group">
+                <label class="font-weight-bold font-italic small" for="systemId">· Choose System to manage:</label>
+                <div class="col col-md-6">
+                  <select name="multiple-select" id="systemId" ngModel  multiple="" class="form-control">
+                    <option *ngFor="let system of Systems" class="font-weight-bold" [value]="system.systemID">{{system.systemName}} ({{system.city}} , {{system.country}})   </option>
+                  </select>
+                  <span class="span-error" id="system-msg" style="opacity:0;">This sentence is invisible</span>
+                </div>
+              </div>
+              <div class="card-header badge-light buttom-header ">
+                <button type="submit"  id="saveButton"  onclick="validation()" (click)="onSaveNewUser()" class="btn btn-primary bottom-button font-weight-bold"><i
+                   class="fas fa-save"></i> Save User</button>
+                <button type="reset"  class="btn btn-danger bottom-button font-weight-bold"><i
+                    class="fas fa-backspace"></i> Reset</button></div>
+            </form>
           </div>
+          <div *ngIf="mode==2" class="card-body">
+            <div class="card border border-primary">
+              <div class="card-header">
+                  <strong class="card-title"><i class="fas fa-user-check"></i> User created successfully</strong>
+              </div>
+              <div class="card-body">
+                  <p class="card-text">
+                      <strong>{{this.getUser.first_name}} {{this.getUser.last_name}}</strong> is able to supervise and controle the FarmSystem.
+                  </p>
+              </div>
+              <div class="col-3 p-1">
+              <button class ="btn btn-outline-primary">Go to Dashboard</button></div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 </div>

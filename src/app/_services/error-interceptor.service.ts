@@ -16,11 +16,19 @@ export class ErrorInterceptor implements HttpInterceptor {
                 this.authenticationService.logout();
                 location.reload(true);
             }
-            if(err.status === 403){
-              err.message = 'Failed to login, wrong credentials';
-          } else {
-                err.message ='Error! Unable to get response from the server. Please, check internet connection';
-          }
+            else if(err.status === 403){
+              err.message = ' Failed to login! Wrong credentials';
+            }
+            else  if(err.status === 500){
+                if(err.message === "Http failure response for http://localhost:8080/register: 500 OK"){
+                    err.message = " The username already exists ! Username must be unique."
+                }
+                else{
+                err.message = ' Failed to establish connection, the System is down. Or App is not running ! Or other problem';}
+              }
+            else {
+               err.message =' Error ! Unable to get response from the server. Please, check internet connection.';
+            }
             const error = err.message || err.statusText;
             return throwError(error);
         }))
