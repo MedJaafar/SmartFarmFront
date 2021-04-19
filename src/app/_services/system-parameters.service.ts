@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { FarmSystem } from '../models/FarmSystem';
 import { retry } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SystemParametersService {
 
-  public host: string = "http://localhost:8080";   // TODO Change this url on cloud load.
+  public host: string = "https://smartfarmdashboard.cfapps.io"; //"http://localhost:8080";   // TODO Change this url on cloud load.
 
   constructor(private http: HttpClient) {
 
@@ -24,5 +23,16 @@ export class SystemParametersService {
     return this.http.get(this.host+'/toggleSystemWatering/'+systemId,{headers: headers }).pipe(
       retry(1),
     )
+  }
+
+  public restartSystem(){
+    console.log("service");
+    const SystemUrl = sessionStorage.getItem('systemUrl');
+    return this.http.post(SystemUrl+'/restart_system',null);
+  }
+
+  public activatePump(activeDelay :any){
+    const SystemUrl = sessionStorage.getItem('systemUrl');
+    return this.http.get(SystemUrl+'/activatepump/'+activeDelay);
   }
 }

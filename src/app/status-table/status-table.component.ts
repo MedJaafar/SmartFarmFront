@@ -31,8 +31,7 @@ export class StatusTableComponent implements OnInit {
     this.statutTableService.getFarmStatus(mode,type,this.currentPage,this.size)
     .subscribe((response)=>{
       this.pageStatus = response;
-      this.pages=new Array(this.pageStatus.totalPages)
-      console.log(response);
+      this.pages=new Array(this.pageStatus.totalPages);
       console.log("total pages :"+this.pageStatus.totalPages);
       })
   }

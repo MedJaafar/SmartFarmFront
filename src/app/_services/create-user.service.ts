@@ -6,7 +6,7 @@ import { NewUser } from '../models/NewUser';
   providedIn: 'root'
 })
 export class CreateUserService {
-
+  public host: string = "https://smartfarmdashboard.cfapps.io"; //"http://localhost:8080";   // TODO Change this url on cloud load.
   constructor(private http:HttpClient) { }
 
   saveNewUser(newUser:NewUser){
@@ -14,6 +14,6 @@ export class CreateUserService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer '+localStorage.getItem('token')
     })
-    return this.http.post("http://localhost:8080/register",newUser,{headers: headers });
+    return this.http.post(this.host+"/register",newUser,{headers: headers });
   }
 }

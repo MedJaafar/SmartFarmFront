@@ -11,7 +11,7 @@ import { ConnectionSystem } from '../models/ConnectionSystem';
 })
 export class ConnectionService {
   
-  public host: string = "http://localhost:8080";   // TODO Change this url on cloud load.
+  public host: string = "https://smartfarmdashboard.cfapps.io";  // "http://localhost:8080";   // TODO Change this url on cloud load.
 
   constructor(private http: HttpClient) { }
 

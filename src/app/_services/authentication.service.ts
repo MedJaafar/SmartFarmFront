@@ -10,7 +10,7 @@ import { AlertService } from './alert.service';
 })
 export class AuthenticationService {
  
-public host2: string = "http://localhost:8080";
+public host2: string = "https://smartfarmdashboard.cfapps.io"; //"http://localhost:8080";
 public jwt  : string ;
 username : string;
 roles: Array <string>;

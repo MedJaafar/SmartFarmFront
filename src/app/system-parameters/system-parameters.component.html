@@ -7,9 +7,24 @@
     </div>
     <div class="card-body ">
       <div class="row">
-        <div class="card ml-auto mr-5">
+        <!-- -->
+        <div class="card col-5 ml-5 border-left-dark">
           <div class="card-header">
-              <span class="mySpan"><i class="fas fa-power-off"></i> Automatic Watering </span>&nbsp;
+            <span class="mySpan"><i class="fas fa-water"></i> Activate Pump </span>&nbsp;
+          </div>
+          <div class="card-body card-block">
+            <button class="btn btn-dark" (click)="activatePumpManually()">Activate Pump</button>
+          </div>
+          <div class="col-5">
+            <label class="small"><i class="far fa-clock"></i> Time In Seconds</label>
+            <input type="number" id="activeTime" [(ngModel)]="activeTime"  min="5" max="60" name="text-input" placeholder="Seconds"
+              class="form-control">
+          </div>
+        </div>
+        <!---->
+        <div class="card col-5 border-left-dark ml-5">
+          <div class="card-header">
+            <span class="mySpan"><i class="fas fa-power-off"></i> Automatic Watering </span>&nbsp;
           </div>
           <div class="card-body card-block">
             <form action="" method="post" class="form-horizontal">
@@ -17,41 +32,24 @@
                 <div class="col-5">
                   <!-- Rounded switch -->
                   <label class="switch">
-                    <input type="checkbox" [defaultChecked]="systemFarm.bEnableWatering" (click)="toggleEnableWatering()">
+                    <input type="checkbox" [defaultChecked]="systemFarm.bEnableWatering"
+                      (click)="toggleEnableWatering()">
                     <span class="slider round"></span>
                   </label>
                 </div>
                 <div class="col-7">
-                  <span  *ngIf="systemFarm.bEnableWatering"class="text-primary font-weight-bold">ENABLED </span>
-                  <span  *ngIf="!systemFarm.bEnableWatering"class="text-danger font-weight-bold">DISABLED</span>
+                  <span *ngIf="systemFarm.bEnableWatering" class="text-primary font-weight-bold">ENABLED </span>
+                  <span *ngIf="!systemFarm.bEnableWatering" class="text-danger font-weight-bold">DISABLED</span>
                 </div>
+              </div>
+              <div class="alert alert-danger" role="alert">
+              <strong>Important : </strong>This Requires Rebooting The System And Reconnecting to the App.
               </div>
             </form>
           </div>
           <div class="card-footer">
           </div>
         </div>
-        <div class="card">
-            <div class="card-header">
-                <span class="mySpan"><i class="fas fa-power-off"></i> Automatic Watering :</span>&nbsp;
-                <span  *ngIf="systemFarm.bEnableWatering"class="text-primary font-weight-bold">"ON"</span>
-                <span  *ngIf="!systemFarm.bEnableWatering"class="text-danger font-weight-bold">"OFF"</span>
-            </div>
-            <div class="card-body card-block">
-              <form action="" method="post" class="form-horizontal">
-                <div class="row form-group">
-                  <div class="col-12">
-                    <!-- Rounded switch -->
-                    <label class="switch">
-                      <input type="checkbox">
-                      <span class="slider round"></span>
-                    </label>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-
       </div>
     </div>
   </div>

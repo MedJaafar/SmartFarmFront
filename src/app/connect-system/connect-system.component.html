@@ -12,7 +12,7 @@
     <!-- Card Body -->
     <div class="card-body">
       <div class="alert alert-primary" role="alert">
-       <strong>SELECT</strong> The FarmSystem To Monitor  <i class="fas fa-level-down-alt"></i>
+        <strong>SELECT</strong> The FarmSystem To Monitor <i class="fas fa-level-down-alt"></i>
       </div>
       <hr>
       <div class="alert alert-danger alert-dismissible fade show" id="alert-validation" role="alert" hidden>
@@ -22,16 +22,22 @@
         </button>
       </div>
       <div class="input-group form-group">
-        <select class="custom-select input-group-costum" #systemsSelect  (change)=loadSystemUrl(systemsSelect.value)
+        <select class="custom-select input-group-costum" #systemsSelect (change)=loadSystemUrl(systemsSelect.value)
           aria-label="Example select with button addon">
-          <option class="text-white-50" [ngValue]="undefined" selected disabled><strong>Choose Smart Farm System</strong></option>
-          <option *ngFor="let system of Systems" [value]="system.systemID">{{system.systemID}} - {{system.systemName}} - ( {{system.city}}, {{system.country}} )</option>
+          <option class="text-white-50" [ngValue]="undefined" selected disabled><strong>Choose Smart Farm
+              System</strong></option>
+          <option *ngFor="let system of Systems" [value]="system.systemID">{{system.systemID}} - {{system.systemName}} -
+            ( {{system.city}}, {{system.country}} )</option>
         </select>
-      </div>  
+      </div>
       <hr>
-      <button class="btn btn-light float-right custom-button-test mt-3" (click)="testConnection()"><i class="fas fa-bolt"></i>&nbsp;Test
+      <div *ngIf='isloading' class="spinner-border text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <button class="btn btn-light float-right custom-button-test mt-3" (click)="testConnection()"><i
+          class="fas fa-bolt"></i>&nbsp;Test
         Connection</button>
     </div>
   </div>
-  
+
 </div>

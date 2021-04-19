@@ -3,7 +3,7 @@ import { ConnectionService } from '../_services/connection.service';
 import { AlertService } from '../_services/alert.service';
 import {Chart} from 'chart.js';
 import { StatusTableService } from '../_services/status-table.service';
-import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -58,9 +58,9 @@ export class DashboardComponent implements OnInit {
         });
         //WATERING
         this.statusList.resolver[3].forEach(element => {
-          this.wateringVolume.push(element.volume);
+          this.wateringVolume.push(Math.round(element.volume * 100) / 100);
           this.wateringDateList.push(element.date);
-          this.moisitureData.push(element.moisitureAvg);
+          this.moisitureData.push(Math.round(element.moisitureAvg * 100) / 100);
         });
         this.wateringData = this.statusList.resolver[0];
         // System Details
@@ -75,8 +75,7 @@ export class DashboardComponent implements OnInit {
       this.alertService.error(err);});
       }
 
-    // Data details
-      
+    // Data details    
   ngOnInit()
   {
   this.selectedHour =sessionStorage.getItem("selectedHours");

@@ -3,6 +3,7 @@ import { ConnectionService } from '../_services/connection.service';
 import { AlertService } from '../_services/alert.service';
 import {FarmSystem} from 'src/app/models/FarmSystem';
 import { SystemUrl } from '../models/SystemUrl';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-connect-system',
@@ -15,11 +16,13 @@ export class ConnectSystemComponent implements OnInit {
   userName : string;
   Systems : any = [];
   systemPathData: any = {};
+  isloading : boolean;
   
-  constructor(public connService : ConnectionService, private alertService : AlertService ) { }
+  constructor(public connService : ConnectionService, private alertService : AlertService,private router: Router ) { }
   
 
   ngOnInit() {
+  this.isloading = false;
   this.loadSystemsList();
   }
   
@@ -37,7 +40,6 @@ export class ConnectSystemComponent implements OnInit {
   public loadSystemUrl(systemID : String){
     return this.connService.getCurrentUrlSystem(systemID).subscribe((data: {}) => {
       this.systemPathData = data;
-      console.log(this.systemPathData)
       this.idFarmSystem = this.systemPathData.systemId;
       this.systemPath = this.systemPathData.url;
     },
@@ -49,6 +51,7 @@ export class ConnectSystemComponent implements OnInit {
   // This stores a connection document in every try.
   public testConnection(){
     //var urlRegex = /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/gm;
+    this.isloading = true;
     var valid : boolean = true;
     this.userName = sessionStorage.getItem('username');
     if(this.idFarmSystem == null || this.idFarmSystem == ""){
@@ -64,9 +67,16 @@ export class ConnectSystemComponent implements OnInit {
     sessionStorage.setItem('systemUrl',this.systemPath);
     sessionStorage.setItem('idFarm',this.idFarmSystem);
     sessionStorage.setItem('selectedHours','17');
+    // Navigate
+    this.router.navigateByUrl('/loading-data', { skipLocationChange: true }).then(() => {
+    this.router.navigate(['/dashboard/3']);
+    localStorage.setItem("selectedCheck","3");
+   }); 
+
     },
     (err) => {console.log(err)
       this.alertService.error(err);});
+      this.isloading = false;
     }
   }
 }

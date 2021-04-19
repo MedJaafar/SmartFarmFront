@@ -102,7 +102,7 @@
           <li class="page-item" *ngFor="let p of pages;let i =index" [ngClass]="{'active':i==currentPage}">
             <a class="page-link waves-effect waves-effect" href="#" data-toggle="pill" (click)="gotoPage(i)">{{i+1}}</a>
           </li>
-          <li class="page-item" [ngClass]="{'disabled':totalPages>currentPage+1}">
+          <li class="page-item" [ngClass]="{'disabled':pages>currentPage+1}">
               <a class="page-link waves-effect waves-effect" href="#" aria-label="Next" data-toggle="pill" (click)="gotoPage(currentPage+1)">
                 <span aria-hidden="true">&raquo;</span>
                 <span class="sr-only">Next</span>
