@@ -10,8 +10,8 @@ import { AlertService } from './alert.service';
 })
 export class AuthenticationService {
  
-//public host2: string = "https://smart-farm-auto-agriculture.herokuapp.com"; 
-public host2: string = "http://localhost:8080";
+public host2: string = "https://smart-farm-auto-agriculture.herokuapp.com"; 
+//public host2: string = "http://localhost:8080";
 
 public jwt  : string ;
 username : string;
@@ -88,10 +88,6 @@ rolesArray : [{
 
   logout() {
     localStorage.removeItem('token');
-    //sessionStorage.removeItem('appUserFs');
-    //sessionStorage.removeItem('appUserLs');
-    //sessionStorage.removeItem('systemUrl');
-    //sessionStorage.removeItem('appUserID');
     sessionStorage.clear();
     localStorage.clear();
     this.initParams();

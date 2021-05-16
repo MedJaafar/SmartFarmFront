@@ -11,8 +11,8 @@ import { ConnectionSystem } from '../models/ConnectionSystem';
 })
 export class ConnectionService {
   
- // public host: string = "https://smart-farm-auto-agriculture.herokuapp.com";
- public host: string = "http://localhost:8080";
+ public host: string = "https://smart-farm-auto-agriculture.herokuapp.com";
+ // public host: string = "http://localhost:8080";
    
   constructor(private http: HttpClient) { }
 
