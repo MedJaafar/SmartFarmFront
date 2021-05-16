@@ -11,8 +11,9 @@ import { ConnectionSystem } from '../models/ConnectionSystem';
 })
 export class ConnectionService {
   
-  public host: string = "https://smartfarmdashboard.cfapps.io";  // "http://localhost:8080";   // TODO Change this url on cloud load.
-
+ // public host: string = "https://smart-farm-auto-agriculture.herokuapp.com";
+ public host: string = "http://localhost:8080";
+   
   constructor(private http: HttpClient) { }
 
    // test URL method -> PiServer is not secured this is why we dont use HEADERS
